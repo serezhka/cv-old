@@ -1,0 +1,170 @@
+\documentclass[11pt,a4paper,russian]{moderncv}
+
+\moderncvtheme[purple]{classic}
+\usepackage[utf8]{inputenc}
+\usepackage[scale=0.8]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[unicode]{hyperref}
+\usepackage{graphicx}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+\makeatletter
+\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+\renewcommand{\rmdefault}{cmr}
+\renewcommand{\sfdefault}{cmss}
+\renewcommand{\ttdefault}{cmtt}
+\renewcommand*{\makecvtitle}{
+  \recomputecvlengths
+  \newbox{\makecvtitledetailsbox}
+  \savebox{\makecvtitledetailsbox}{
+    \addressfont\color{color2}
+    \begin{tabular}[t]{@{}r@{}}
+      \ifthenelse{\isundefined{\@addressstreet}}{}{\makenewline\addresssymbol\@addressstreet
+        \ifthenelse{\equal{\@addresscity}{}}{}{\makenewline\@addresscity}}
+      \makenewline\includegraphics[width=8pt,height=8pt]{birth_logo.jpg} 08.03.1993
+      \ifthenelse{\isundefined{\@mobile}}{}{\makenewline\mobilesymbol\@mobile}
+      \ifthenelse{\isundefined{\@email}}{}{\makenewline\emailsymbol\emaillink{\@email}}
+      \ifthenelse{\isundefined{\@homepage}}{}{\makenewline\githubsocialsymbol\httplink{\@homepage}}
+      \ifthenelse{\isundefined{\@extrainfo}}{}{\makenewline\@extrainfo}
+    \end{tabular}
+  }
+  \newbox{\makecvtitlepicturebox}
+  \savebox{\makecvtitlepicturebox}{
+    \ifthenelse{\isundefined{\@photo}}
+    {}
+    {
+      \hspace*{\separatorcolumnwidth}
+      \color{color1}
+      \setlength{\fboxrule}{\@photoframewidth}
+      \ifdim\@photoframewidth=0pt
+        \setlength{\fboxsep}{0pt}\fi
+  \framebox{\includegraphics[width=\@photowidth]{\@photo}}}}
+  % name and title
+  \newlength{\makecvtitledetailswidth}\settowidth{\makecvtitledetailswidth}{\usebox{\makecvtitledetailsbox}}
+  \newlength{\makecvtitlepicturewidth}\settowidth{\makecvtitlepicturewidth}{\usebox{\makecvtitlepicturebox}}
+  \ifthenelse{\lengthtest{\makecvtitlenamewidth=0pt}}% check for dummy value (equivalent to \ifdim\makecvtitlenamewidth=0pt)
+    {\setlength{\makecvtitlenamewidth}{\textwidth-\makecvtitledetailswidth-\makecvtitlepicturewidth}}
+    {}
+  \begin{minipage}[t]{\makecvtitlenamewidth}
+    \namestyle{\@firstname\ \@familyname}
+    \ifthenelse{\equal{\@title}{}}{}{\\[1.25em]\titlestyle{\@title}}
+  \end{minipage}
+  \hfill
+  % detailed information
+  \llap{
+    \begin{minipage}[t]{\makecvtitledetailswidth}
+    \vspace*{-17pt}
+    \usebox{\makecvtitledetailsbox}
+    \end{minipage}}
+  % optional photo (rendering)
+  \begin{minipage}[t]{\makecvtitlepicturewidth}
+    \vspace*{-22pt}
+    \vbox to 0pt{
+      \usebox{\makecvtitlepicturebox}
+    }
+  \end{minipage}\\[2.0em]
+  % optional quote
+  \ifthenelse{\isundefined{\@quote}}
+    {}%
+    {{\centering\begin{minipage}{\quotewidth}\centering\quotestyle{\@quote}\end{minipage}\\[2.5em]}}
+  \par}% to avoid weird spacing bug at the first section if no blank line is left after \makecvtitle
+\makeatother
+
+\firstname{Сергей}
+\familyname{Федоров}
+\address{Санкт-Петербург, Россия}{}
+\mobile{+7-921-921-0108}
+\email{serezhka@xakep.ru}
+\homepage{https://github.com/serezhka}
+\photo[70pt][0pt]{qr-code-contact.png}
+\title{CV}
+
+\begin{document}
+\maketitle
+
+\section{Краткие сведения}
+\cvline
+  {}
+  {Мое основое направление - разработка десктопных и веб-приложений на Java, \newline{} 
+  разработка для мобильной платформы Android.}
+
+\section{Проекты}
+\cvline
+  {Storage-exam}
+  {Система тестирования производительности баз данных.\newline{} 
+  Разработаны различные сценарии записи/чтения данных, автоматическое построение графиков производительности тестируемых баз данных.\newline{} Исходный код закрыт (Яндекс NDA)}
+\cvline
+  {php-ini-plugin}
+  {Языковой плагин для IntelliJ IDEA 11.1. \newline{} 
+  Разработаны лексер, парсер, подсветка синтаксиса, структурированный вид и контроль повторяющихся ключевых слов для php.ini (Файл конфигурации PHP).}  
+\cvline
+  {Micelius}
+  {\url{https://github.com/serezhka/Micelius}\newline{}
+  Frontend-backend service, web framework.}
+\cvline
+  {Optiks}
+  {\url{https://github.com/Avladiev/Optiks_v2}\newline{}
+  LibGDX Engine based Android game.}
+
+\section{Опыт работы}
+\cventry
+  {Дек. 2010 - Июнь 2013}
+  {Программист}
+  {ООО "ОП "ООВО", Санкт-Петербург, Россия}
+  {}{}
+  {Установка, настройка и обслуживание аппаратного и программного обеспечения. 
+  \newline{}Консультация пользователей и помощь при работе с программным обеспечением, локальной сетью.}
+\cventry
+  {Нояб. 2010 - Авг. 2011}
+  {Стажер-разработчик}
+  {ООО "Яндекс", Санкт-Петербург, Россия}
+  {}{}
+  {Разработка программного обеспечения.}
+\cventry
+  {Апр. 2009 - Нояб. 2010}
+  {Системный администратор}
+  {ООО "Филин", Санкт-Петербург, Россия}
+  {}{}
+  {Установка, настройка и обслуживание аппаратного и программного обеспечения. 
+  \newline{}Консультация пользователей и помощь при работе с программным обеспечением, локальной сетью.}  
+
+\section{Навыки разработки}
+\subsection{Языки программирования}
+\cvline
+  {Intermediate}{Java}
+\cvline
+  {Basic}{Delphi, Visual Basic, C++}
+\subsection{Фреймворки и технологии}
+\cvline{Java}{Spring, Jetty, Gson}
+\cvline{Android}{LibGDX, AndEngine, Universal Tween Engine}
+\newpage
+
+\section{Навыки владения компьютером}
+  \cvline
+  {IDE/Editors}{IntelliJ IDEA, Notepad++, Embarcadero RAD Studio (Delphi), Visual Studio}
+  \cvline
+  {OS}{Windows, Linux (Kali Linux, Linux Mint), MacOS X}
+  \cvline
+  {VCS}{Git, SVN}
+
+\section{Образование}
+  \cventry
+    {}
+    {\textnormal{Санкт-Петербургский национальный исследовательский университет информационных технологий, механики и оптики}{ (СПбНИУ ИТМО)}}
+    {\textnormal{Естественнонаучный факульет, кафедра высшей математики}}
+    {}{}{}
+  \cventry
+    {2010 - 2014}
+    {\textnormal{Бакалавр по направлению "прикладная математика и информатика"}}
+    {}{}{}{}
+  \cventry
+    {2014 - ...}
+    {\textnormal{Магистр по направлению "математическое моделирование"}}
+    {}{}{}{}
+\section{Персональная информация}
+  \cvline{Возраст}{22 года}
+  \cvline{}{Имеются водительские права, автомобиль}
+
+\end{document}
